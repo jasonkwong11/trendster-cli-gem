@@ -9,7 +9,6 @@ How to Build a CLI Gem
   *Pick a site to check what's trending. Enter 1-4.
   *Display the list of trending topics for that social media site (and maybe description too)
   
-
   
 
 
@@ -18,5 +17,16 @@ How to Build a CLI Gem
 4. force that to build the CLI interface
 5. stub out the interface
 6. start making things real
+
+  -What is a trend/trending item?
+    A trending item has a name.
+    A trending item has a social media site it belongs to.
+    A trending item has a URL.
+    A trending Twitter item has a tweet count.
+    A trending Facebook item has a description.
+    A trending Youtube item has a view count.
+    A trending Google item has a ranking.
+
+
 7. discover objects
 8. program
