@@ -9,7 +9,12 @@ class Trendster::CLI
 
   def list_social_media
     puts "See what's trending today on social media!"
+    puts <<-DOC
 
+    *Show a list of social media sites:
+    1. Facebook, 2. Twitter, 3. Youtube, and 4. Google
+
+    DOC
     @trends = Trendster::Trend.today
   end
 
