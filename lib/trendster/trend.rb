@@ -1,29 +1,36 @@
 class Trendster::Trend
 
- attr_accessor :name, :site, :url, :viewcount
+ attr_accessor :name, :site, :url
 
-  #def initialize(name, site, url)
-  #  @name = name
-  #  @site = site
-  #  @url = url
-  #end
+  def initialize(name, site, url)
+    @name = name
+    @site = site
+    @url = url
+  end
 
-def self.today
+  def self.list_trends(input)
+    #list trends after user inputs a selection
+    if input == "1"
+      puts "Facebook Trend 1"
+      puts "Facebook Trend 2"
+    elsif input == "2"
+      puts "Twitter Trend 3"
+      puts "Twitter Trend 4"
+      puts "Twitter Trend 5"
+    elsif input == "3"
+      puts "Youtube Trend 6"
+      puts "Youtube Trend 7"
+    elsif input == "4" 
+      puts "Youtube Trend 8"
+      puts "Youtube Trend 9"
+    elsif input == "list"
+        list_social_media
+    else
+        puts "Please enter a number 1-4. 'list' or 'exit'"
+    end
+      
+  end
 
-  trend_1 = self.new
-  trend_1.name = "GORILLA GRABS CHILD WHO'S FALLEN INTO HABITAT AT CINCINNATI ZOO GORILLA GRABS CHILD WHOS FALLEN INT"
-  trend_1.site = "Youtube"
-  trend_1.url = "https://www.youtube.com/watch?v=UBeVfQtSD2k"
-  trend_1.viewcount = "13,199,976"
-
-  trend_2 = self.new
-  trend_2.name = "GMOD PROP HUNT FUNNY MOMENTS - BANK ROBBERY SUPERHEROES! (GARRY'S MOD)"
-  trend_2.site = "Youtube"
-  trend_2.url = "https://www.youtube.com/watch?v=oS2JN9mPWTs"
-  trend_2.viewcount = "3,270,840"
-
-  [trend_1, trend_2]
-end
 end
 
 
