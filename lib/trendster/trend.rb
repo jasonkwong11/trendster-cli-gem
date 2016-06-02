@@ -1,35 +1,43 @@
+require './lib/trendster'
+
 class Trendster::Trend
 
- attr_accessor :name, :site, :url
+ attr_accessor :name, :url, :tweet_count
 
-  def initialize(name, site, url)
-    @name = name
-    @site = site
-    @url = url
+@@all = []
+  #def initialize(name, site, url)
+   # @name = name
+   # @url = url
+   # @tweet_count = tweet_count
+  #end
+
+#should list current Twitter trends.
+
+
+  def self.list_trends
+    puts "See what's trending today on Twitter!"
+    #puts <<-DOC
+    #1. Kyrie Irving, 2. #WhatMyBestFriendTaughtMe, 3. WhenIWasYoung 4. Sheniah Twain
+    #DOC
+    puts @trends = Trendster::Trend.trend_details.map{|x| x.name}
   end
 
-  def self.list_trends(input)
-    #list trends after user inputs a selection
-    if input == "1"
-      puts "Facebook Trend 1"
-      puts "Facebook Trend 2"
-    elsif input == "2"
-      puts "Twitter Trend 3"
-      puts "Twitter Trend 4"
-      puts "Twitter Trend 5"
-    elsif input == "3"
-      puts "Youtube Trend 6"
-      puts "Youtube Trend 7"
-    elsif input == "4" 
-      puts "Youtube Trend 8"
-      puts "Youtube Trend 9"
-    elsif input == "list"
-        list_social_media
-    else
-        puts "Please enter a number 1-4. 'list' or 'exit'"
-    end
-      
+  def self.trend_details
+
+    trend_1 = self.new
+    trend_1.name = "WhenIWasYoung"
+    trend_1.url = "https://twitter.com/hashtag/WhenIWasYoung?src=tren"
+    trend_1.tweet_count = "48K Tweets"
+
+    trend_2 = self.new
+    trend_2.name = "#WednesdayWisdom"
+    trend_2.url = "https://twitter.com/hashtag/WednesdayWisdom?src=tren"
+    trend_2.tweet_count = "64K Tweets"
+
+    [trend_1, trend_2]
+  
   end
+  
 
 end
 

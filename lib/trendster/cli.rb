@@ -1,19 +1,13 @@
+require './lib/trendster'
 
 class Trendster::CLI
 #domino order of methods to run:
   def call
-    list_trends
+    Trendster::Trend.list_trends
     menu
     goodbye
   end
-#should list social media options: Facebook, Twitter, etc.
-  def list_trends
-    puts "See what's trending today on Twitter!"
-    puts <<-DOC
-    1. Kyrie Irving, 2. #WhatMyBestFriendTaughtMe, 3. WhenIWasYoung 4. Sheniah Twain
-    DOC
-    #@trends = Trendster::Trend.today
-  end
+
 
   def menu
     input = nil
@@ -22,15 +16,23 @@ class Trendster::CLI
       input = gets.strip.downcase
       case input
       when "1"
-        puts "More info on Kyrie Irving trend.."
+        puts Trendster::Trend.trend_details[0].name
+        puts Trendster::Trend.trend_details[0].url
+        puts Trendster::Trend.trend_details[0].tweet_count
       when "2"
-        puts "More info on #WhatMyBestFriendTaughtMe trend.."
+        puts Trendster::Trend.trend_details[1].name
+        puts Trendster::Trend.trend_details[1].url
+        puts Trendster::Trend.trend_details[1].tweet_count
       when "3"
         puts "More info on WhenIWasYoung trend.."
       when "4"
         puts "More info on Sheniah Twain trend.."  
       when "list"
-        list_trends
+        Trendster::Trend.list_trends
+      when "exit"
+        break
+      else
+         puts "Please enter a number 1-4. 'list' or 'exit'"
       end
     end
   end
