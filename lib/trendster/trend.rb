@@ -15,11 +15,11 @@ class Trendster::Trend
 
 
   def self.list_trends
-    puts "See what's trending today on Twitter!"
-    #puts <<-DOC
-    #1. Kyrie Irving, 2. #WhatMyBestFriendTaughtMe, 3. WhenIWasYoung 4. Sheniah Twain
-    #DOC
-    puts @trends = Trendster::Trend.trend_details.map{|x| x.name}
+    puts "Here's what's trending today on Twitter:"
+    @trends = []
+    Trendster::Trend.trend_details.each{|x| @trends << x.name}
+    counter = 0
+    @trends.each{|trend_name| counter +=1; puts "#{counter}. #{trend_name}"}
   end
 
   def self.trend_details
