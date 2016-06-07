@@ -1,6 +1,6 @@
 # Trendster
 
-This Ruby gem scrapes the events page from the Cuyahoga County Public Library's website uses Nokogiri to delivers the events' name, description, location, and audience right to your command line.
+This Ruby gem scrapes the events page from the Cuyahoga County Public Library's website uses Nokogiri to deliver the events' name, description, location, and audience right to your command line.
 
 ## Installation
 
