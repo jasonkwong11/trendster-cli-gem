@@ -15,7 +15,7 @@ attr_accessor :name, :description, :date, :location, :audience
     @@all
   end
 
-  def self.scrape_twitter_page
+  def self.scrape_library_page
     url_endings = []
     index_url = "http://cuyahogalibrary.org/Events/Event-Results.aspx"
     index_doc = Nokogiri::HTML(open(index_url))

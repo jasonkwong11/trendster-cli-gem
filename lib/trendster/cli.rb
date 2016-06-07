@@ -4,26 +4,26 @@ require 'pry'
 class Trendster::CLI
 #domino order of methods to run:
   def call
-    make_trends
-    list_trends
+    make_events
+    list_events
     menu
     goodbye
   end
 #should instantiate new trend objects
-  def make_trends
-    trend_array = Trendster::Scraper.scrape_twitter_page
-    Trendster::Trend.create_from_collection(trend_array)
+  def make_events
+    events_array = Trendster::Scraper.scrape_library_page
+    Trendster::Event.create_from_collection(events_array)
 
   end
 
 #should list current Twitter trends.
 
-  def list_trends
-    puts "Here's what's trending today on Twitter:"
-    @trends = []
-    Trendster::Trend.all.each{|x| @trends << x.name}
+  def list_events
+    puts "Here are the most recent events at the Cuyahoga County Public Library!:"
+    @events = []
+    Trendster::Event.all.each{|x| @events << x.name}
     counter = 0
-    @trends.each{|trend_name| counter +=1; puts "#{counter}. #{trend_name}"}
+    @events.each{|event_name| counter +=1; puts "#{counter}. #{event_name}"}
 
   end
 
@@ -31,17 +31,17 @@ class Trendster::CLI
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the event you'd like more info on, 'list' to see the trends again, or type 'exit'."
+      puts "Enter the number of the event you'd like more info on, 'list' to see the events again, or type 'exit'."
       input = gets.strip
 
       if input.to_i > 0
-        puts Trendster::Trend.all[input.to_i - 1].name
-        puts Trendster::Trend.all[input.to_i - 1].description
-        puts Trendster::Trend.all[input.to_i - 1].date
-        puts "Location: #{Trendster::Trend.all[input.to_i - 1].location}"
-        puts "Audience: #{Trendster::Trend.all[input.to_i - 1].audience}"
+        puts Trendster::Event.all[input.to_i - 1].name
+        puts Trendster::Event.all[input.to_i - 1].description
+        puts Trendster::Event.all[input.to_i - 1].date
+        puts "Location: #{Trendster::Event.all[input.to_i - 1].location}"
+        puts "Audience: #{Trendster::Event.all[input.to_i - 1].audience}"
       elsif input == "list"
-        list_trends
+        list_events
       elsif input == "exit"
         break
       else
