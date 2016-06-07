@@ -3,9 +3,19 @@ require './lib/trendster'
 class Trendster::CLI
 #domino order of methods to run:
   def call
-    Trendster::Trend.list_trends
+    list_trends
     menu
     goodbye
+  end
+
+#should list current Twitter trends.
+
+  def list_trends
+    puts "Here's what's trending today on Twitter:"
+    @trends = []
+    Trendster::Trend.trend_details.each{|x| @trends << x.name}
+    counter = 0
+    @trends.each{|trend_name| counter +=1; puts "#{counter}. #{trend_name}"}
   end
 
 
@@ -20,7 +30,7 @@ class Trendster::CLI
         puts Trendster::Trend.trend_details[input.to_i - 1].url
         puts Trendster::Trend.trend_details[input.to_i - 1].tweet_count
       elsif input == "list"
-        Trendster::Trend.list_trends
+        list_trends
       elsif input == "exit"
         break
       else
