@@ -1,11 +1,19 @@
 require './lib/trendster'
+require 'pry'
 
 class Trendster::CLI
 #domino order of methods to run:
   def call
+    make_trends
     list_trends
     menu
     goodbye
+  end
+#should instantiate new trend objects
+  def make_trends
+    trend_array = Trendster::Scraper.scrape_twitter_page
+    Trendster::Trend.create_from_collection(trend_array)
+
   end
 
 #should list current Twitter trends.
@@ -13,22 +21,25 @@ class Trendster::CLI
   def list_trends
     puts "Here's what's trending today on Twitter:"
     @trends = []
-    Trendster::Trend.trend_details.each{|x| @trends << x.name}
+    Trendster::Trend.all.each{|x| @trends << x.name}
     counter = 0
     @trends.each{|trend_name| counter +=1; puts "#{counter}. #{trend_name}"}
+
   end
 
 
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the name of the trend you'd like more info on, list to see the trends again, or type exit."
+      puts "Enter the number of the event you'd like more info on, 'list' to see the trends again, or type 'exit'."
       input = gets.strip
 
       if input.to_i > 0
-        puts Trendster::Trend.trend_details[input.to_i - 1].name
-        puts Trendster::Trend.trend_details[input.to_i - 1].url
-        puts Trendster::Trend.trend_details[input.to_i - 1].tweet_count
+        puts Trendster::Trend.all[input.to_i - 1].name
+        puts Trendster::Trend.all[input.to_i - 1].description
+        puts Trendster::Trend.all[input.to_i - 1].date
+        puts "Location: #{Trendster::Trend.all[input.to_i - 1].location}"
+        puts "Audience: #{Trendster::Trend.all[input.to_i - 1].audience}"
       elsif input == "list"
         list_trends
       elsif input == "exit"
@@ -41,7 +52,7 @@ class Trendster::CLI
   end
 
   def goodbye
-    puts "See you next time for more Twitter trends!"
+    puts "See you next time for more library events!"
   end
 
 end

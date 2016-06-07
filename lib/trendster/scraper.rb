@@ -31,24 +31,22 @@ attr_accessor :name, :description, :date, :location, :audience
         event_doc = Nokogiri::HTML(open(event_url))
        event_doc_array << event_doc
       end
+      all_array = []
     event_doc_array.each do |event_doc|
-     @@all << {
+     all_array << {
       name: event_doc.css("h3").text,
-      description: event_doc.css("p.one-large-content").text,
+      description: event_doc.css("p.one-large-content").text || "",
       date: event_doc.css("strong").text,
       location: event_doc.css("p").css("a").text,
       audience: event_doc.css("p").text.match("Adults") || event_doc.css("p").text.match("Children") 
     }
     end
-    @@all
-    binding.pry
+    all_array
 
     #NAME: event_doc.css("h3").text
     #DESCRIPTION: event_doc.css("p.one-large-content").text
     #DATE: event_doc.css("strong").text
     #LOCATION: event_doc.css("p").css("a").text
     #AUDIENCE:event_doc.css("p").text.match("Adults"||"Children")
-
-
   end
 end
