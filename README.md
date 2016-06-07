@@ -1,8 +1,6 @@
 # Trendster
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/trendster`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby gem scrapes the events page from the Cuyahoga County Public Library's website using Nokogiri and delivers the events' name, description, location, and audience right to your command line.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Follow the directions on the command line interface. A list of Cuyahoga County Public Library events will be given. Enter the number of the event you'd like more details on. You can type 'list' to see the list of events again or type 'exit' to exit the application.
 
 ## Development
 
