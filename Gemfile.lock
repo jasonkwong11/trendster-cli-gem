@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trendster (1.0.1)
+    trendster (1.0.2)
       nokogiri
 
 GEM
