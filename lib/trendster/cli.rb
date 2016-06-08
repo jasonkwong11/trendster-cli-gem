@@ -1,3 +1,4 @@
+
 class Trendster::CLI
 #domino order of methods to run:
   def call
@@ -18,18 +19,18 @@ class Trendster::CLI
     puts "Here are the most recent events at the Cuyahoga County Public Library!:"
     @events = []
     Trendster::Event.all.each{|x| @events << x.name}
-    counter = 0
-    @events.each{|event_name| counter +=1; puts "#{counter}. #{event_name}"}
+    @counter = 0
+    @events.each{|event_name| @counter +=1; puts "#{counter}. #{event_name}"}
   end
 
 
-  def menu
+   def menu
     input = nil
     while input != "exit"
       puts "Enter the number of the event you'd like more info on, 'list' to see the events again, or type 'exit'."
       input = gets.strip
 
-      if input.to_i > 0
+      if input.to_i > 0 && Trendster::Event.all[input.to_i - 1] != nil
         puts Trendster::Event.all[input.to_i - 1].name
         puts Trendster::Event.all[input.to_i - 1].description
         puts Trendster::Event.all[input.to_i - 1].date
@@ -39,13 +40,9 @@ class Trendster::CLI
         list_events
       elsif input == "exit"
         break
-      elsif input.to_i > Trendster::Event.all.count
-        puts "Please enter a valid number."
       else
-        puts "Please enter the number of the event, 'list' or 'exit'"
+        puts "Please enter a valid number, 'list' or 'exit'"
       end
-
-    end
   end
 
   def goodbye
