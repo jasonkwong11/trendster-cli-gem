@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require './lib/trendster'
+require_relative '../lib/trendster'
 
 Trendster::CLI.new.call

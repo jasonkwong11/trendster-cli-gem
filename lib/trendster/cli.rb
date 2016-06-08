@@ -9,14 +9,13 @@ class Trendster::CLI
     menu
     goodbye
   end
-#should instantiate new trend objects
+#should instantiate new event objects
   def make_events
     events_array = Trendster::Scraper.scrape_library_page
     Trendster::Event.create_from_collection(events_array)
-
   end
 
-#should list current Twitter trends.
+#should list current library events.
 
   def list_events
     puts "Here are the most recent events at the Cuyahoga County Public Library!:"
@@ -24,7 +23,6 @@ class Trendster::CLI
     Trendster::Event.all.each{|x| @events << x.name}
     counter = 0
     @events.each{|event_name| counter +=1; puts "#{counter}. #{event_name}"}
-
   end
 
 
@@ -44,8 +42,10 @@ class Trendster::CLI
         list_events
       elsif input == "exit"
         break
+      elsif input.to_i > Trendster::Event.all.count
+        puts "Please enter a valid number."
       else
-        puts "Please enter a number 1-4. 'list' or 'exit'"
+        puts "Please enter the number of the event, 'list' or 'exit'"
       end
 
     end
