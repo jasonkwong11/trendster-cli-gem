@@ -1,8 +1,3 @@
-require './lib/trendster'
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
-
 #scrapes the twitter page for name of the trend, url, and tweet count
 
 class Trendster::Scraper

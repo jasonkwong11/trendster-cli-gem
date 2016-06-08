@@ -1,5 +1,3 @@
-require './lib/trendster'
-
 class Trendster::Event
 
  attr_accessor :name, :description, :date, :location, :audience

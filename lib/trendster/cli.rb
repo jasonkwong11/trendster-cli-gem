@@ -1,6 +1,3 @@
-require_relative './lib/trendster'
-require 'pry'
-
 class Trendster::CLI
 #domino order of methods to run:
   def call
