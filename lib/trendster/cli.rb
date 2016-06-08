@@ -19,8 +19,8 @@ class Trendster::CLI
     puts "Here are the most recent events at the Cuyahoga County Public Library!:"
     @events = []
     Trendster::Event.all.each{|x| @events << x.name}
-    @counter = 0
-    @events.each{|event_name| @counter +=1; puts "#{counter}. #{event_name}"}
+    counter = 0
+    @events.each{|event_name| counter +=1; puts "#{counter}. #{event_name}"}
   end
 
 
