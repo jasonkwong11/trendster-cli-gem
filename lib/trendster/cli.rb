@@ -1,4 +1,4 @@
-require './lib/trendster'
+require_relative './lib/trendster'
 require 'pry'
 
 class Trendster::CLI
