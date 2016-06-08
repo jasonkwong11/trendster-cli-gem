@@ -1,5 +1,5 @@
 
-class Trendster::Cli
+class Trendster::CLI
 #domino order of methods to run:
   def call
     make_events
@@ -43,6 +43,7 @@ class Trendster::Cli
       else
         puts "Please enter a valid number, 'list' or 'exit'"
       end
+    end
   end
 
   def goodbye
