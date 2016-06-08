@@ -6,7 +6,7 @@ require 'trendster/version'
 Gem::Specification.new do |spec|
   spec.name          = "trendster"
   spec.date          = '2016-06-07'
-  spec.version       = "0.1.3"
+  spec.version       = Trendster::VERSION
   spec.authors       = ["Jason"]
   spec.email         = ["jasonkwong11@gmail.com"]
 
