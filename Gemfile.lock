@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     trendster (0.1.5)
+      nokogiri
 
 GEM
   remote: https://rubygems.org/
