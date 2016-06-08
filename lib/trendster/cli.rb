@@ -1,5 +1,5 @@
 
-class Trendster::CLI
+class Trendster::Cli
 #domino order of methods to run:
   def call
     make_events
