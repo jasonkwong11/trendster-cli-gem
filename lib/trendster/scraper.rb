@@ -1,4 +1,3 @@
-#scrapes the twitter page for name of the trend, url, and tweet count
 
 class Trendster::Scraper
 
@@ -37,11 +36,5 @@ attr_accessor :name, :description, :date, :location, :audience
     }
     end
     all_array
-
-    #NAME: event_doc.css("h3").text
-    #DESCRIPTION: event_doc.css("p.one-large-content").text
-    #DATE: event_doc.css("strong").text
-    #LOCATION: event_doc.css("p").css("a").text
-    #AUDIENCE:event_doc.css("p").text.match("Adults"||"Children")
   end
 end
