@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    trendster (1.0.0)
+    trendster (0.1.4)
 
 GEM
   remote: https://rubygems.org/
