@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "trendster"
   spec.date          = '2016-06-07'
   spec.version       = Trendster::VERSION
-  spec.authors       = ["Jason"]
+  spec.authors       = ["Jason Kwong"]
   spec.email         = ["jasonkwong11@gmail.com"]
 
   spec.summary       = "CLI interface to Cuyahoga County Public Library events."
-  spec.description   = "Provides details to upcoming events at library with CLI interface."
+  spec.description   = "Provides details of upcoming events at library with CLI interface."
   spec.homepage      = "https://github.com/jasonkwong11/trendster-cli-gem"
   spec.license       = "MIT"
 
