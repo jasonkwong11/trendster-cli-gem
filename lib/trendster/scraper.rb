@@ -1,4 +1,3 @@
-
 class Trendster::Scraper
 
 @@all = []

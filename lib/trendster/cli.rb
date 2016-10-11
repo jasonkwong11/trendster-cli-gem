@@ -18,31 +18,35 @@ class Trendster::CLI
 
   def list_events
     puts "Here are the most recent events at the Cuyahoga County Public Library:"
-    @events = []
-    Trendster::Event.all.each{|x| @events << x.name}
-    counter = 0
-    @events.each{|event_name| counter +=1; puts "#{counter}. #{event_name}"}
+    all_events = Trendster::Event.all
+    all_events.each do |event|
+      puts "#{all_events.index(event) + 1}. #{event.name}"
+    end
   end
 
   def menu
     input = nil
-    while input != "exit"
-    puts "Enter the number of the event you'd like more info on, 'list' to see the events again, or type 'exit'."
-    input = gets.strip
 
-      if input.to_i > 0 && Trendster::Event.all[input.to_i - 1] != nil
-        puts Trendster::Event.all[input.to_i - 1].name
-        puts Trendster::Event.all[input.to_i - 1].description
-        puts Trendster::Event.all[input.to_i - 1].date
-        puts "Location: #{Trendster::Event.all[input.to_i - 1].location}"
-        puts "Audience: #{Trendster::Event.all[input.to_i - 1].audience}"
-      elsif input == "list"
-        list_events
-      elsif input == "exit"
-        break
-      else
-        puts "Please enter a valid number, 'list' or 'exit'"
-      end
+    while input != "exit"
+
+      selected_event = Trendster::Event.all[input.to_i - 1] if input != "list"
+   
+      puts "Enter the number of the event you'd like more info on, 'list' to see the events again, or type 'exit'."
+      input = gets.strip
+
+        if input.to_i > 0 && selected_event != nil
+          puts selected_event.name
+          puts selected_event.description
+          puts selected_event.date
+          puts "Location: #{selected_event.location}"
+          puts "Audience: #{selected_event.audience}"
+        elsif input == "list"
+          list_events
+        elsif input == "exit"
+          break
+        else
+          puts "Please enter a valid number, 'list' or 'exit'"
+        end
     end
   end
 
