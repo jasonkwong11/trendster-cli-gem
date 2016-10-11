@@ -28,25 +28,25 @@ class Trendster::CLI
     input = nil
 
     while input != "exit"
-
-      selected_event = Trendster::Event.all[input.to_i - 1] if input != "list"
    
       puts "Enter the number of the event you'd like more info on, 'list' to see the events again, or type 'exit'."
       input = gets.strip
 
-        if input.to_i > 0 && selected_event != nil
+      if input.to_i > 0 && Trendster::Event.all[input.to_i - 1] != nil
+        selected_event = Trendster::Event.all[input.to_i - 1]
           puts selected_event.name
           puts selected_event.description
           puts selected_event.date
           puts "Location: #{selected_event.location}"
           puts "Audience: #{selected_event.audience}"
-        elsif input == "list"
-          list_events
-        elsif input == "exit"
-          break
-        else
-          puts "Please enter a valid number, 'list' or 'exit'"
-        end
+      elsif input == "list"
+        list_events
+      elsif input == "exit"
+        break
+      else
+        puts "Please enter a valid number, 'list' or 'exit'"
+      end
+      
     end
   end
 
